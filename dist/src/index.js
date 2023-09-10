@@ -27,4 +27,4 @@ app.use("/api/profile", profile_1.default);
 const port = app.get("port");
 const server = app.listen(port, () => console.log(`Server started on port ${port}`));
 exports.default = server;
-//# sourceMappingURL=server.js.map
+//# sourceMappingURL=index.js.map

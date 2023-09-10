@@ -7,12 +7,14 @@
   "scripts": {
     "tsc": "tsc",
     "watch-tsc": "tsc -w",
-    "deploy": "node dist/src/server.js",
-    "watch-deploy": "nodemon dist/src/server.js",
+    "deploy": "node dist/src/index.js",
+    "watch-deploy": "nodemon dist/src/index.js",
     "server": "concurrently \"npm run watch-tsc\" \"npm run watch-deploy\"",
-    "start": "npm run deploy",
     "heroku-postbuild": "npm run tsc",
-    "build": "tsc"
+    "start": "nodemon src/index.ts",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -26,6 +28,11 @@
     "request": "^2.88.2",
     "typescript": "^4.8.4"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/config": "3.3.0",
@@ -34,6 +41,8 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/mongoose": "^5.11.97",
     "concurrently": "^7.4.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.1"
   }
 }
