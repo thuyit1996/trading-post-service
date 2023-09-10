@@ -9,7 +9,7 @@ import profile from "./routes/api/profile";
 const app = express();
 
 // Connect to MongoDB
-connectDB();
+// connectDB();
 
 // Express configuration
 app.set("port", process.env.PORT || 5000);
