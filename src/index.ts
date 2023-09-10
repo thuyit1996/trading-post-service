@@ -5,14 +5,14 @@ import connectDB from "../config/database";
 import auth from "./routes/api/auth";
 import user from "./routes/api/user";
 import profile from "./routes/api/profile";
+import * as dotenv from 'dotenv'
+dotenv.config();
 
 const app = express();
-
-// Connect to MongoDB
-// connectDB();
+connectDB();
 
 // Express configuration
-app.set("port", process.env.PORT || 5000);
+app.set("port", 5000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
