@@ -6,7 +6,8 @@ import * as dotenv from 'dotenv'
 dotenv.config();
 
 const app = express();
-connectDB();
+console.log(process.env)
+// connectDB();
 
 // Express configuration
 app.use(bodyParser.json());
